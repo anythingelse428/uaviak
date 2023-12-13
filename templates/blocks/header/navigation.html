@@ -1,0 +1,79 @@
+{% load static %}
+
+<nav id="{{ id }}" class="navigation">
+    <ul class="links">
+        <li class="logo">
+            <a href="/">
+                {{ self.logo|safe }}
+            </a>
+        </li>
+        <li v-for="(link, index) in menu.mainLinks" class="link" :class="[
+                Array.isArray(link.children) ? 'group' : '',
+                link.isOpen > 0 ? 'open' : ''
+            ]">
+            <a :href="link.url ?? null" @click="() => {
+                    if (Array.isArray(link.children)) this.toggleLinksGroupVisibility(menu.mainLinks,index)
+                }">[[ link.content ]]</a>
+            <div v-if="Array.isArray(link.children)" class="additional">
+                <svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 9L0.23686 0.75L9.76314 0.75L5 9Z" fill="currentColor" />
+                </svg>
+                <ul class="links">
+                    <li v-for="linkChild in link.children" class="link">
+                        <a :href="linkChild.url ?? null">[[ linkChild.content ]]</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="burger-trigger" v-show="menu.subLinks.links.length>0">
+            <svg @click="toggleMenuVisibility()" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16"
+                height="16" viewBox="0 0 16 16" style=" fill:#000000;">
+                <path
+                    d="M 1 2 L 1 3 L 14 3 L 14 2 Z M 1 7 L 1 8 L 14 8 L 14 7 Z M 1 12 L 1 13 L 14 13 L 14 12 Z">
+                </path>
+            </svg>
+        </li>
+        <div class="navigation__submenu" v-if="menu.subLinks.isOpen">
+            <li v-for="(link, index) in menu.subLinks.links" class="link">
+                <a :href="link.url ?? null" target="_blank" @click="() => {
+                    if (Array.isArray(link.children)) this.toggleLinksGroupVisibility(menu.subLinks.links, index)
+                }">[[ link.content ]]
+                    <svg v-show="link.isOpen" width="10" height="9" viewBox="0 0 10 9" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 9L0.23686 0.75L9.76314 0.75L5 9Z" fill="currentColor" />
+                    </svg>
+                </a>
+                <div v-show="link.isOpen" class="additional">
+                    <ul class="links">
+                        <li v-for="linkChild in link.children" class="link">
+                            <a :href="linkChild.url ?? null" target="_blank">[[ linkChild.content ]]</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </div>
+    </ul>
+</nav>
+
+<script src="{% static 'scripts/header/navigation.js' %}"></script>
+<script type="text/javascript">
+    const headerNavigation = createHeaderNavigation('[id="{{ id }}"]',
+        [
+            {% for link in self.links %}
+                {% if link.children|length > 0 %}
+                    {
+                        content: '{{ link.text }}',
+                        children: [
+                            {% for child in link.children %}
+                                { content: '{{ child.text }}', url: '{{ child.url }}' },
+                            {% endfor %}
+                        ],
+                        isOpen: false
+                    },
+                {% else %}
+                    { content: '{{ link.text }}', url: '{{ link.url }}' },
+                {% endif %}
+            {% endfor %}
+        ]
+    )
+</script>

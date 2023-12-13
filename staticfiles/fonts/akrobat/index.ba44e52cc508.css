@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Akrobat';
+    src: local('Akrobat Thin'), local('Akrobat-Thin'), url("Akrobatthin.3c8582691c3c.woff2") format('woff2'), url("Akrobatthin.f917b23e5a66.woff") format('woff'), url("Akrobatthin.41b753b1f6bf.ttf") format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Akrobat';
+    src: local('Akrobat ExtraLight'), local('Akrobat-ExtraLight'), url("Akrobatextralight.8c11eba3f038.woff2") format('woff2'), url("Akrobatextralight.87098d0e4159.woff") format('woff'), url("Akrobatextralight.af8b6c698846.ttf") format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Akrobat';
+    src: local('Akrobat Light'), local('Akrobat-Light'), url("Akrobatlight.cf725ab5972e.woff2") format('woff2'), url("Akrobatlight.37eb821a67c2.woff") format('woff'), url("Akrobatlight.a127fec38b46.ttf") format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Akrobat';
+    src: local('Akrobat'), local('Akrobat-Regular'), url("Akrobat.3b49c320fe64.woff2") format('woff2'), url("Akrobat.c983fca98cb2.woff") format('woff'), url("Akrobat.865737627e2f.ttf") format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Akrobat';
+    src: local('Akrobat SemiBold'), local('Akrobat-SemiBold'), url("Akrobatsemibold.488a625dd634.woff2") format('woff2'), url("Akrobatsemibold.da8ac816e927.woff") format('woff'), url("Akrobatsemibold.629ee6a2b4c6.ttf") format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Akrobat';
+    src: local('Akrobat Bold'), local('Akrobat-Bold'), url("Akrobatbold.743c04db292c.woff2") format('woff2'), url("Akrobatbold.9d8ba3229e89.woff") format('woff'), url("Akrobatbold.deecd7f6a5c9.ttf") format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Akrobat';
+    src: local('Akrobat ExtraBold'), local('Akrobat-ExtraBold'), url("Akrobatextrabold.c598e5c8dd7a.woff2") format('woff2'), url("Akrobatextrabold.337ba0bc1555.woff") format('woff'), url("Akrobatextrabold.3b9d54f04b9b.ttf") format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Akrobat';
+    src: local('Akrobat Black'), local('Akrobat-Black'), url("Akrobatblack.a21a6bd98df4.woff2") format('woff2'), url("Akrobatblack.b1b1c20ef974.woff") format('woff'), url("Akrobatblack.462c40d17e42.ttf") format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}

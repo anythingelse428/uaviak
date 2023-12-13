@@ -1,0 +1,70 @@
+<section id="{{ id }}" class="complex-section news-carousel">
+    <div class="additional-links">
+        <div class="wrapper">
+            <ul class="links">
+                {% for link in self.additional_links %}
+                    <li class="link">
+                        <a href="{{ link.url }}">{{ link.text }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="spacer" style="height: 20px"></div>
+    <div class="content">
+        <div class="wrapper">
+            <div class="carousel articles">
+                <div class="swiper-wrapper">
+                    {% for article in self.articles %}
+                        <div class="swiper-slide">
+                            {% include 'includes/cards/article.html' with article=article %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination swiper-pagination-white"></div>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+<script type="text/javascript">
+    swiperJsBundleCbs.push(function() {
+        new Swiper('[id="{{ id }}"] .carousel', {
+            spaceBetween: 30,
+            slidesPerView: 1,
+            pagination: {
+                el: '[id="{{ id }}"] .carousel .swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                600: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 2
+                },
+                769: {
+                    slidesPerView: 3,
+                    slidesPerGroup: 3
+                },
+                1024: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 4
+                },
+                1400: {
+                    slidesPerView: 5,
+                    slidesPerGroup: 5
+                },
+            },
+            navigation: {
+                nextEl: '[id="{{ id }}"] .carousel .swiper-button-next',
+                prevEl: '[id="{{ id }}"] .carousel .swiper-button-prev',
+            },
+        })
+    })
+</script>

@@ -1,0 +1,32 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<section id="{{ id }}" class="complex-section site-map">
+    <div class="content">
+        <div class="wrapper">
+            <nav class="navigation">
+                <ul class="links" style="
+                    grid-gap: {{ self.grid.gap }};
+                    grid-template-columns: repeat({{ self.grid.template.columns.count }}, {{ self.grid.template.columns.size }});
+                    grid-auto-rows: {{ self.grid.template.rows.size }};
+                ">
+                    {% for link in self.links %}
+                        <li class="link" style="
+                            grid-row-start: {{ link.row.start }};
+                            grid-row-end: {{ link.row.end }};
+                            grid-column-start: {{ link.column.start }};
+                            grid-column-end: {{ link.column.end }};
+                        ">
+                            {% image link.image fill-300x300-c100 class="image" %}
+                            <div class="plate"></div>
+                            <a href="{{ link.url }}" target="_blank">
+                                <div style="min-height: {{ self.grid.template.rows.size }}" class="content">
+                                    <span class="text">{{ link.content|richtext }}</span>
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>

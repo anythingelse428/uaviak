@@ -1,0 +1,41 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<section id="{{ id }}" class="banners-slider">
+    <div class="wrapper">
+        <div class="slider">
+            <div class="swiper-wrapper">
+                {% for slide in self.banners %}
+                    {% image slide.image original as slide_image %}
+                    <a href="{{ slide.url }}" target="_blank" class="banner swiper-slide">
+                        <img src="{{ slide_image.url }}" alt="{{ slide.label }}">
+                        {% if slide.label %}
+                            <label>{{ slide.label }}</label>
+                        {% endif %}
+                    </a>
+                {% endfor %}
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination swiper-pagination-white"></div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    swiperJsBundleCbs.push(function() {
+        new Swiper('[id="{{ id }}"] .slider', {
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+            },
+            pagination: {
+                el: '[id="{{ id }}"] .slider .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '[id="{{ id }}"] .slider .swiper-button-next',
+                prevEl: '[id="{{ id }}"] .slider .swiper-button-prev',
+            },
+        })
+    })
+</script>

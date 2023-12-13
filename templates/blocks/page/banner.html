@@ -1,0 +1,13 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<section id="{{ id }}" class="plain-banner">
+    <div class="wrapper">
+        {% image self.image width-1420 as tmp_image %}
+        <a href="{{ self.url }}" target="_blank" class="banner">
+            <img src="{{ tmp_image.url }}" alt="{{ self.label }}">
+            {% if self.label %}
+                <label>{{ self.label }}</label>
+            {% endif %}
+        </a>
+    </div>
+</section>

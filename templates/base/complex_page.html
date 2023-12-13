@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+    <script src="{% static 'scripts/iframes.js' %}"></script>
+    <div class="spacer" style="height: 64px"></div>
+    <section id="complex-page-{{ page.id }}" class="page complex-page">
+        <div class="wrapper complex-page-wrapper">
+            <section class="content tablet">
+                <header class="heading">
+                    {% if page.seo_title %}
+                        {{ page.seo_title }}
+                    {% else %}
+                        {{ page.title }}
+                    {% endif %}
+                </header>
+                {% for tab in page.tabs.all|dictsort:"sort_order" %}
+                    <div
+                        class="body"
+                        :style="[this.currentSubPage?.id === 'tab{{ forloop.counter }}' ? 'display: block' : 'display: none']"
+                    >
+                        {% for block in tab.body %}
+                            {% include_block block with id=block.id %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </section>
+            <section class="additional">
+                <section class="tablet">
+                    <header class="heading">Оглавление</header>
+                    <div class="body">
+                        <ul class="links">
+                            <li
+                                v-for="subPage in subPages"
+                                class="link"
+                                :class="subPage.isActive ? 'active' : ''"
+                            >
+                                <a @click="selectSubPage(subPage.id)">
+                                    <span class="text">[[ subPage.name ]]</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="tablet">
+                    <header class="heading">
+                        Материалы
+                    </header>
+                    <div class="body">
+                        <ul class="links">
+                            {% for material in page.materials.all|dictsort:"sort_order" %}
+                                <li class="link">
+                                    <a target="_blank" href="{{ material.document.url }}">
+                                        <svg class="icon" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M7.30306 6.76667C7.32605 6.76669 7.34852 6.75993 7.36767 6.74722C7.38682 6.73451 7.40179 6.71643 7.4107 6.69524C7.41961 6.67405 7.42207 6.65071 7.41776 6.62813C7.41345 6.60556 7.40257 6.58476 7.38648 6.56834L5.09982 4.24318C5.08357 4.22668 5.06277 4.21539 5.04008 4.21074C5.0174 4.2061 4.99384 4.20831 4.97241 4.2171C4.95099 4.22589 4.93266 4.24086 4.91977 4.2601C4.90688 4.27934 4.90001 4.30198 4.90002 4.32514V6.41668C4.90002 6.5095 4.9369 6.59852 5.00254 6.66416C5.06817 6.7298 5.1572 6.76667 5.25002 6.76667H7.30306Z" fill="currentColor"/>
+                                            <path d="M4.34583 7.32085C4.22603 7.20266 4.13084 7.0619 4.06576 6.90671C4.00068 6.75152 3.967 6.58497 3.96666 6.41668V3.73335H1.86666C1.37204 3.73481 0.898099 3.93195 0.548348 4.2817C0.198597 4.63145 0.0014619 5.10539 0 5.60002V12.1333C0 12.6284 0.196666 13.1032 0.546733 13.4533C0.8968 13.8033 1.37159 14 1.86666 14H6.06666C6.56173 14 7.03652 13.8033 7.38659 13.4533C7.73665 13.1032 7.93332 12.6284 7.93332 12.1333V7.70001H5.24999C5.08169 7.69977 4.91511 7.66613 4.75991 7.60105C4.6047 7.53596 4.46396 7.44072 4.34583 7.32085ZM9.44998 3.03335H11.503C11.526 3.03337 11.5485 3.0266 11.5676 3.01389C11.5868 3.00119 11.6018 2.9831 11.6107 2.96192C11.6196 2.94073 11.622 2.91739 11.6177 2.89481C11.6134 2.87223 11.6025 2.85143 11.5864 2.83502L9.29978 0.509857C9.28353 0.493356 9.26273 0.482065 9.24004 0.477421C9.21736 0.472778 9.1938 0.474991 9.17237 0.483781C9.15095 0.49257 9.13262 0.507537 9.11973 0.526777C9.10684 0.546016 9.09997 0.568656 9.09998 0.591815V2.68335C9.09998 2.77618 9.13686 2.8652 9.2025 2.93084C9.26813 2.99648 9.35716 3.03335 9.44998 3.03335Z" fill="currentColor"/>
+                                            <path d="M9.44992 3.96666C9.11037 3.96407 8.78545 3.82803 8.54534 3.58791C8.30523 3.3478 8.16919 3.02289 8.16659 2.68333V0H5.0166C4.55264 0.000540344 4.10783 0.185088 3.77976 0.513159C3.45169 0.84123 3.26714 1.28603 3.2666 1.75V2.8H4.4951C4.6519 2.80062 4.80704 2.83223 4.95159 2.89299C5.09615 2.95376 5.22727 3.04248 5.33743 3.15408L8.52126 6.39157C8.74338 6.61694 8.8674 6.92098 8.8663 7.2374V11.2H10.4136C11.3618 11.2 12.133 10.4148 12.133 9.44998V3.96666H9.44992Z" fill="currentColor"/>
+                                        </svg>
+                                        <span class="text">{{ material.name }}</span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </section>
+    
+    <script src="{% static 'scripts/page.js' %}"></script>
+    <script type="text/javascript">
+        const page = createPage('#complex-page-{{ page.id }}',
+            [
+                {% for tab in page.tabs.all|dictsort:"sort_order" %}
+                    {
+                        id: 'tab{{ forloop.counter }}',
+                        name: '{{ tab.name }}',
+                        isActive: false
+                    },
+                {% endfor %}
+            ]
+        )
+    </script>
+    <script type="text/javascript">
+        viewerJsBundleCbs.push(function() {
+            document.querySelectorAll('[id="complex-page-{{ page.id }}"] .content.tablet .body').forEach(elem => {
+                new Viewer(elem)
+            })
+        })
+    </script>
+
+    <div class="spacer" style="height: 64px"></div>
+{% endblock content %}

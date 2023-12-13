@@ -1,0 +1,15 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<section id="{{ id }}" class="complex-section partners">
+    <div class="content">
+        <div class="list">
+            {% for partner in self.partners %}
+                <a href="{{ partner.url }}" target="_blank" class="item">
+                    {% image partner.logo original as tmp_logo %}
+                    <img class="logo" src="{{ tmp_logo.url }}">
+                    <span class="text">{{ partner.name|richtext }}</span>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>

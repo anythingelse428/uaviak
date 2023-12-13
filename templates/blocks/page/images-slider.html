@@ -1,0 +1,31 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div id="{{ id }}" class="images-slider">
+    <div class="full-width">
+        <div class="slider">
+            <div class="swiper-wrapper">
+                {% for slide in self.images %}
+                    {% image slide original as slide_image %}
+                    <div class="swiper-slide">
+                        <img src="{{ slide_image.url }}" alt="slide_image.alt" />
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination swiper-pagination-white"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    swiperJsBundleCbs.push(function() {
+        new Swiper('[id="{{ id }}"] .slider', {
+            slidesPerView: "auto",
+            centeredSlides: true,
+            pagination: {
+                el: '[id="{{ id }}"] .slider .swiper-pagination',
+                clickable: true,
+            },
+        })
+    })
+</script>

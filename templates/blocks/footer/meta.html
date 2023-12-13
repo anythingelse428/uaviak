@@ -1,0 +1,51 @@
+{% load wagtailimages_tags %}
+
+<section id="{{ id }}" class="meta">
+    <div class="wrapper">
+        <ul class="parts">
+            {% for column in self.columns %}
+                <li class="part">
+                    <h3 class="title">
+                        {{ column.title }}
+                    </h3>
+                    {% for block in column.content %}
+                        {% if block.block_type == 'text' %}
+                            <span class="text">
+                                {{ block.value }}
+                            </span>
+                        {% elif block.block_type == 'contacts' %}
+                            <ul class="list">
+                                {% for contact in block.value %}
+                                    <li class="item">
+                                        {{ contact.icon|safe }}
+                                        <span class="text">
+                                            {{ contact.text|safe }}
+                                        </span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% elif block.block_type == 'different_contacts' %}
+                            <ul class="list">
+                                {% for contact in block.value %}
+                                    {% if contact.block_type == 'contact' %}
+                                        <li class="item">
+                                            {{ contact.value.icon|safe }}
+                                            <span class="text">
+                                                {{ contact.value.text|safe }}
+                                            </span>
+                                        </li>
+                                    {% elif contact.block_type == 'contact_image' %}
+                                        <li class="item">
+                                            {{ contact.value.icon|safe }}
+                                            {% image contact.value.image original %}
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

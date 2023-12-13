@@ -1,0 +1,64 @@
+{% load static %}
+
+<section id="{{ id }}" class="accordion">
+    <header class="accordion-header" :class="accordion.isOpen ? 'open' : ''">
+        <div class="wrapper">
+            <nav class="navigation">
+                <ul class="links">
+                    <li class="link swapper">
+                        <a @click="() => toggleAccordion()" class="button">
+                            <svg class="icon" width="16" height="17" viewBox="0 0 16 17" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8 0.852783C3.58214 0.852783 0 4.43493 0 8.85278C0 13.2706 3.58214 16.8528 8 16.8528C12.4179 16.8528 16 13.2706 16 8.85278C16 4.43493 12.4179 0.852783 8 0.852783ZM8 15.4956C4.33214 15.4956 1.35714 12.5206 1.35714 8.85278C1.35714 5.18493 4.33214 2.20993 8 2.20993C11.6679 2.20993 14.6429 5.18493 14.6429 8.85278C14.6429 12.5206 11.6679 15.4956 8 15.4956Z"
+                                    fill="currentColor" />
+                                <path
+                                    d="M7.14282 5.70993C7.14282 5.93725 7.23313 6.15527 7.39387 6.31602C7.55462 6.47676 7.77264 6.56707 7.99997 6.56707C8.22729 6.56707 8.44531 6.47676 8.60606 6.31602C8.7668 6.15527 8.85711 5.93725 8.85711 5.70993C8.85711 5.4826 8.7668 5.26458 8.60606 5.10383C8.44531 4.94309 8.22729 4.85278 7.99997 4.85278C7.77264 4.85278 7.55462 4.94309 7.39387 5.10383C7.23313 5.26458 7.14282 5.4826 7.14282 5.70993ZM8.42854 7.70993H7.57139C7.49282 7.70993 7.42854 7.77421 7.42854 7.85278V12.7099C7.42854 12.7885 7.49282 12.8528 7.57139 12.8528H8.42854C8.50711 12.8528 8.57139 12.7885 8.57139 12.7099V7.85278C8.57139 7.77421 8.50711 7.70993 8.42854 7.70993Z"
+                                    fill="currentColor" />
+                            </svg>
+                            <span class="text">
+                                Полезная информация
+                            </span>
+                            <svg class="drop-down" width="30" height="31" viewBox="0 0 30 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M15 0.852783C6.71591 0.852783 0 7.56869 0 15.8528C0 24.1369 6.71591 30.8528 15 30.8528C23.2841 30.8528 30 24.1369 30 15.8528C30 7.56869 23.2841 0.852783 15 0.852783ZM10.5095 12.8432C10.2524 12.5948 9.9079 12.4574 9.55036 12.4605C9.19282 12.4636 8.8508 12.607 8.59797 12.8598C8.34515 13.1127 8.20173 13.4547 8.19863 13.8122C8.19552 14.1698 8.33297 14.5142 8.58136 14.7714L14.0359 20.226C14.2916 20.4816 14.6384 20.6252 15 20.6252C15.3616 20.6252 15.7084 20.4816 15.9641 20.226L21.4186 14.7714C21.667 14.5142 21.8045 14.1698 21.8014 13.8122C21.7983 13.4547 21.6549 13.1127 21.402 12.8598C21.1492 12.607 20.8072 12.4636 20.4496 12.4605C20.0921 12.4574 19.7476 12.5948 19.4905 12.8432L15 17.3337L10.5095 12.8432Z"
+                                    fill="currentColor" />
+                            </svg>
+                        </a>
+                    </li>
+                    {% for link in self.links %}
+                        <li class="link">
+                            <a href="{{ link.url }}" target="_blank">
+                                <div>{{ link.icon|safe }}</div>
+                                <span class="text">
+                                    {{ link.text }}
+                                </span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="accordion-content" ref="accordionContent" :class="accordion.classList">
+        <div class="wrapper">
+            <nav class="navigation">
+                <ul class="links">
+                    {% for link in self.hidden_links %}
+                        <li class="link">
+                            <a href="{{ link.url }}" target="_blank">
+                                {{ link.text }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<script src="{% static 'scripts/footer/navigation.js' %}"></script>
+<script type="text/javascript">
+    const footerNavigation = createFooterNavigation('[id="{{ id }}"]')
+</script>

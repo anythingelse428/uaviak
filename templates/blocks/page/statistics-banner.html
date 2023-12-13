@@ -1,0 +1,24 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<section id="{{ id }}" class="complex-section statistics">
+    <div class="content">
+        <div class="wrapper">
+            {% image self.image original as tmp_image %}
+            <ul class="list" style="background-image: url('{{ tmp_image.url }}')">
+                {% for statistic in self.statistics %}
+                    <li class="item statistic">
+                        <div class="container">
+                            <h3 class="value">{{ statistic.value }}</h3>
+                        </div>
+                        <div class="container">
+                            <span class="description">{{ statistic.description }}</span>
+                        </div>
+                    </li>
+                    {% if not forloop.last %}
+                        <li class="item line"></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>

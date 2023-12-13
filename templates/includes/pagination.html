@@ -1,0 +1,17 @@
+<nav class="pagination">
+    <ul class="pages">
+        {% for page in pages %}
+            <li class="page {% if page == current_page %}current{% endif %}">
+                {% if page == current_page %}
+                    <a>{{ page }}</a>
+                {% elif page == '…' %}
+                    <span>{{ page }}</span>
+                {% else %}
+                    <a
+                        href="?page={{ page }}{% for key, value in filters.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}"
+                    >{{ page }}</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

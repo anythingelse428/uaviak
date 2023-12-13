@@ -1,0 +1,72 @@
+{% load base_tags static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="{% if page.search_description %}{{ page.search_description }}{% endif %}">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <link rel="shortcut icon" type="image/png" href="{% static 'media/favicon.ico' %}"/>
+
+        <link type="text/css" rel="stylesheet" href="{% static 'fonts/akrobat/index.css' %}">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.2/viewer.min.css" integrity="sha512-9EosEckNJFma9X2uo5ysGPhVf/dcZTuZUBVW2A9QcWBd0HAx6zs+FK+wsBGhl91uFfDI4ZY+/7MVhtYU4tXEig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <link rel="stylesheet" href="{% static 'styles/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+
+        <link rel="stylesheet" href="{% static 'libs/bvi/css/bvi.min.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'libs/bvi/css/bvi-font.min.css' %}" type="text/css">
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
+        <script id="viewer-js-bundle" src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.2/viewer.min.js" integrity="sha512-1TCjsgfYd9edJ4mO6sb8rLzhnGpnFR4GazDGVhDekHrOHU7y7vcqGiO+4yW0HIDBoIY/ocbM/BrXxg8dYO6wSQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/javascript">
+            const viewerJsBundle = document.querySelector("#viewer-js-bundle")
+            const viewerJsBundleCbs = []
+        </script>
+
+        <script id="swiper-js-bundle" src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+        <script type="text/javascript">
+            const swiperJsBundle = document.querySelector("#swiper-js-bundle")
+            const swiperJsBundleCbs = []
+        </script>
+
+        <script src="{% static 'scripts/vue.js' %}"></script>
+
+        <title>
+            {% block title %}
+                {% if page.seo_title %}
+                    {{ page.seo_title }}
+                {% else %}
+                    {{ page.title }}
+                {% endif %}
+            {% endblock %}
+            {% block title_suffix %}
+                | Ульяновский Авиационный Колледж
+            {% endblock %}
+        </title>
+    </head>
+
+    <body>
+        {% header_tag %}
+
+        <main class="main">
+            {% block content %}По неизведанным обстоятельствам страница не была отображена{% endblock content %}
+            {% bottom_content_tag %}
+        </main>
+
+        {% footer_tag %}
+
+        <script src="{% static 'libs/bvi/js/jquery.min.js' %}"></script>
+        <script src="{% static 'libs/bvi/js/responsivevoice.min.js' %}"></script>
+        <script src="{% static 'libs/bvi/js/js.cookie.js' %}"></script>
+        <script src="{% static 'libs/bvi/js/bvi-init.js' %}"></script>
+        <script src="{% static 'libs/bvi/js/bvi.min.js' %}"></script>
+        <script type="text/javascript">
+            viewerJsBundleCbs.forEach(cb => cb())
+            swiperJsBundleCbs.forEach(cb => cb())
+        </script>
+    </body>
+</html>

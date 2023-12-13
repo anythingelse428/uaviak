@@ -1,0 +1,29 @@
+{% load static wagtailcore_tags %}
+
+<section id="{{ id }}" class="complex-section map">
+    <h2 class="title">
+        Мы на карте
+    </h2>
+    <div class="spacer" style="height: 40px"></div>
+    <div class="content">
+        <iframe
+            class="map-wrapper"
+            src="{{ self.url }}"
+            height="600"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+        <div class="mark-container wrapper">
+            <div style="background: url('{% static 'media/bookmark.svg' %}') no-repeat" class="mark">
+                {{ self.logo|safe }}
+                <span class="text">
+                    {{ self.text|richtext }}
+                </span>
+                {{ self.social.icon|safe }}
+                <a target="_blank" href="{{ self.social.url }}" class="link">Напишите нам</a>
+            </div>
+        </div>
+    </div>
+</section>
