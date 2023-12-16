@@ -5,8 +5,7 @@ from wagtail.models import Page, StreamField, Orderable
 from wagtail.snippets.models import register_snippet
 
 from navigation.blocks import FooterNavigationBlock, HeaderNavigationBlock
-from pages.blocks import PageContentBlock, FooterMetaBlock, HeaderMetaBlock, PartnersBlock, SpacerBlock, \
-    SectionTitleBlock
+from pages.blocks import PageContentBlock, FooterMetaBlock, HeaderMetaBlock
 
 
 @register_snippet
