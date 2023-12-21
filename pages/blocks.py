@@ -5,7 +5,7 @@ from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.contrib.table_block.blocks import TableBlock
 from blog.blocks import NewsSliderBlock, ArticlesListBlock
-
+from svo.blocks import DeceasedListBlock
 
 # Spacer Block
 from navigation.blocks import SiteMapBlock
@@ -151,6 +151,20 @@ class SectionTitleBlock(blocks.StructBlock):
         template = 'blocks/page/section-title.html'
 
 
+# Patriotic Section Title Block
+class PatrioticSectionTitleBlock(blocks.StructBlock):
+    text = blocks.CharBlock(label='Текст')
+
+    class Meta:
+        template = 'blocks/page/patriotic-section-title.html'
+
+
+# Patriotic Line Block
+class PatrioticLineBlock(blocks.Block):
+    class Meta:
+        template = 'blocks/page/patriotic-line.html'
+
+
 # Statistics Banner Block
 class StatisticElementBlock(blocks.StructBlock):
     value = blocks.CharBlock(label='Значение')
@@ -169,6 +183,16 @@ class StatisticsBannerBlock(blocks.StructBlock):
 class PageContentBlock(blocks.StreamBlock):
     spacer = SpacerBlock(icon='arrows-up-down', label='Разрыв контента', help_text='Отступ между элементами')
     section_title = SectionTitleBlock(icon='title', label='Название секции', help_text='Название секции')
+    patriotic_section_title = PatrioticSectionTitleBlock(
+        icon='title',
+        label='Патриотичное название секции',
+        help_text='Патриотичное название секции'
+    )
+    patriotic_line = PatrioticLineBlock(
+        icon='horizontal-rule',
+        label='Патриотичная линия',
+        help_text='Патриотичная линия'
+    )
     rich_text = RichTextBlock(icon='pilcrow', label='Редактор текста',
                               features=[
                                   'h1', 'h2', 'h3', 'h4', 'h5', 'h6',  # heading elements
@@ -198,6 +222,7 @@ class PageContentBlock(blocks.StreamBlock):
                                               help_text='Баннер со статистикой')
     news_slider = NewsSliderBlock(icon='folder-open-1', label='Карусель новостей')
     articles_list = ArticlesListBlock(icon='list-ol', label='Список статей')
+    deceased_list = DeceasedListBlock(icon='group', label='Список усопших')
     table = TableBlock(
         label='Таблица',
         table_options={
