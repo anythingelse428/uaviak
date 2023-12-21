@@ -15,7 +15,7 @@ class DeceasedPage(Page):
         verbose_name='Изображение'
     )
     biography = fields.RichTextField(verbose_name='Биография', features=[])
-    preview_biography = fields.RichTextField(verbose_name='Превью биографии', max_length=255, features=[])
+    preview_biography = fields.RichTextField(verbose_name='Превью биографии', features=[])
     birth_date = models.DateField(verbose_name="Дата рождения")
     death_date = models.DateField(verbose_name="Дата смерти")
 
@@ -46,6 +46,7 @@ class DeceasedPage(Page):
 
 class DeceasedAward(Orderable):
     page = ParentalKey(DeceasedPage, on_delete=models.CASCADE, related_name='awards')
+    name = models.CharField(max_length=255, verbose_name='Название награды')
     image = models.ForeignKey(
         'wagtailimages.Image',
         on_delete=models.SET_NULL,
@@ -55,6 +56,7 @@ class DeceasedAward(Orderable):
     )
 
     panels = [
+        FieldPanel('name'),
         FieldPanel('image')
     ]
 

@@ -1,0 +1,18 @@
+<section class="content --swo">
+    <div class="card-list">
+        {% for person in self.persons %}
+            <a class="card" href="page.html">
+                <div class="card-img">
+                    {% srcset_image person.image width-160 height-250 as tmp_photo %}
+                    <img src="{{ tmp_photo.url }}" width="{{ tmp_photo.width }}" height="{{ tmp_photo.height }}"/>
+                </div>
+                <div class="card-info">
+                    <h1 class="card-header">{{ person.title }}
+                        {{ person.birth_date }} – {{ person.death_date }}
+                    </h1>
+                    <div class="card-text">{{ person.preview_biography }}</div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</section>

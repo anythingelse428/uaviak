@@ -1,10 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load wagtailimages_tags wagtailcore_tags %}
 
-</body>
-</html>
+{% block content %}
+    <div class="spacer" style="height: 64px"></div>
+    <section class="article-single --swo">
+        <div class="wrapper">
+            <article class="article">
+                <section class="content">
+                    <header class="heading">
+                        <h1 class="title">{{ page.title }}</h1>
+                        <h2 class="sub-title">{{ page.birth_date }} – {{ page.death_date }}</h2>
+                    </header>
+                    <div class="mega-wrapper">
+                        {% srcset_image page.image original as tmp_photo %}
+                        <img src="{{ tmp_photo.url }}" width="315" height="435" alt="{{ page.title }}" class="image">
+                        <div class="body">
+                            <section class="body-section">
+                                <h1 class="section-title">Биография</h1>
+                                <div class="section-content">{{ page.biography }}</div>
+                            </section>
+                            <section class="body-section">
+                                <h1 class="section-title">Боевые награды</h1>
+                                <div class="section-content">
+                                    {% for award in page.awards.all %}
+                                        {% srcset_image award.image original as tmp_award_photo %}
+                                        <img src="{{ tmp_award_photo.url }}" width="45" height="90" alt="{{ award.name }}" class="medal">
+                                    {% endfor %}
+                                </div>
+                            </section>
+                            <section class="body-section">
+                                <h1 class="section-title">Файлы</h1>
+                                <div class="section-content">
+                                    {% for deceased_file in page.files.all %}
+                                        <a href="{{ deceased_file.document.url }}" target="_blank">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+                                                <rect width="50" height="50" rx="3" fill="#456B92"/>
+                                                <path d="M27.6503 24.5C27.6996 24.5001 27.7478 24.4856 27.7888 24.4583C27.8298 24.4311 27.8619 24.3923 27.881 24.3469C27.9001 24.3015 27.9054 24.2515 27.8961 24.2031C27.8869 24.1548 27.8636 24.1102 27.8291 24.075L22.9291 19.0925C22.8943 19.0572 22.8497 19.033 22.8011 19.023C22.7525 19.0131 22.702 19.0178 22.6561 19.0366C22.6102 19.0555 22.5709 19.0876 22.5433 19.1288C22.5157 19.17 22.5009 19.2185 22.501 19.2682V23.75C22.501 23.9489 22.58 24.1397 22.7206 24.2803C22.8613 24.421 23.0521 24.5 23.251 24.5H27.6503Z" fill="white"/>
+                                                <path d="M21.3125 25.6875C21.0558 25.4343 20.8518 25.1326 20.7123 24.8001C20.5729 24.4675 20.5007 24.1106 20.5 23.75V18H16C14.9401 18.0032 13.9245 18.4256 13.175 19.1751C12.4256 19.9245 12.0031 20.9401 12 22V36C12 37.0609 12.4214 38.0783 13.1716 38.8284C13.9217 39.5786 14.9391 40 16 40H25C26.0608 40 27.0783 39.5786 27.8284 38.8284C28.5785 38.0783 29 37.0609 29 36V26.5H23.25C22.8893 26.4995 22.5324 26.4274 22.1998 26.2879C21.8672 26.1485 21.5656 25.9444 21.3125 25.6875ZM32.25 16.5H36.6493C36.6986 16.5001 36.7467 16.4856 36.7878 16.4583C36.8288 16.4311 36.8609 16.3924 36.88 16.347C36.8991 16.3016 36.9043 16.2515 36.8951 16.2032C36.8859 16.1548 36.8626 16.1102 36.8281 16.075L31.9281 11.0925C31.8933 11.0572 31.8487 11.033 31.8001 11.023C31.7515 11.0131 31.701 11.0178 31.6551 11.0367C31.6092 11.0555 31.5699 11.0876 31.5423 11.1288C31.5147 11.17 31.4999 11.2185 31.5 11.2682V15.75C31.5 15.9489 31.579 16.1397 31.7196 16.2804C31.8603 16.421 32.051 16.5 32.25 16.5Z" fill="white"/>
+                                                <path d="M32.2509 18.5C31.5233 18.4944 30.8271 18.2029 30.3126 17.6884C29.798 17.1739 29.5065 16.4776 29.501 15.75V10H22.751C21.7568 10.0012 20.8036 10.3966 20.1006 11.0996C19.3976 11.8026 19.0021 12.7558 19.001 13.75V16H21.6335C21.9695 16.0013 22.3019 16.0691 22.6117 16.1993C22.9214 16.3295 23.2024 16.5196 23.4385 16.7587L30.261 23.6962C30.7369 24.1792 31.0027 24.8307 31.0003 25.5087V34H34.3159C36.3478 34 38.0003 32.3175 38.0003 30.25V18.5H32.2509Z" fill="white"/>
+                                            </svg>
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </section>
+
+    <script type="text/javascript">
+        viewerJsBundleCbs.push(function() {
+            new Viewer(
+                document.querySelector('#article-single .content .body')
+            )
+        })
+    </script>
+    
+    <div class="spacer" style="height: 64px"></div>
+{% endblock content %}

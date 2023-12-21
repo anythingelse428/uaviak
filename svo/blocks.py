@@ -10,4 +10,4 @@ class DeceasedListBlock(blocks.StructBlock):
         return context
 
     class Meta:
-        template = 'blocks/blog/deceased-list.html'
+        template = 'blocks/svo/deceased-list.html'
