@@ -1,6 +1,6 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<a class="article link" href="/news/{{ article.slug }}">
+<a class="article link" href="{{ article.full_url }}">
     {% image article.image fill-300x200-c100 as tmp_image %}
     <img class="image" src="{{ tmp_image.url }}" alt="{{ tmp_image.alt }}">
     <time class="date">{{ article.first_published_at|date:"l, d.m.Y" }}</time>
