@@ -3,7 +3,7 @@
         {% for person in self.persons %}
             <a class="card" href="page.html">
                 <div class="card-img">
-                    {% srcset_image person.image width-160 height-250 as tmp_photo %}
+                    {% image person.image width-160 height-250 as tmp_photo %}
                     <img src="{{ tmp_photo.url }}" width="{{ tmp_photo.width }}" height="{{ tmp_photo.height }}"/>
                 </div>
                 <div class="card-info">

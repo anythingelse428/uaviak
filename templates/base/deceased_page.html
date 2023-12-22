@@ -12,7 +12,7 @@
                         <h2 class="sub-title">{{ page.birth_date }} – {{ page.death_date }}</h2>
                     </header>
                     <div class="mega-wrapper">
-                        {% srcset_image page.image original as tmp_photo %}
+                        {% image page.image original as tmp_photo %}
                         <img src="{{ tmp_photo.url }}" width="315" height="435" alt="{{ page.title }}" class="image">
                         <div class="body">
                             <section class="body-section">
