@@ -188,6 +188,11 @@ class PageContentBlock(blocks.StreamBlock):
         label='Патриотичное название секции',
         help_text='Патриотичное название секции'
     )
+    patriotic_line = PatrioticLineBlock(
+        icon='horizontal-rule',
+        label='Патриотичная линия',
+        help_text='Патриотичная линия'
+    )
     rich_text = RichTextBlock(icon='pilcrow', label='Редактор текста',
                               features=[
                                   'h1', 'h2', 'h3', 'h4', 'h5', 'h6',  # heading elements
