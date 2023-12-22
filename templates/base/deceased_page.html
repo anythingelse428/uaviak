@@ -23,7 +23,7 @@
                                 <h1 class="section-title">Боевые награды</h1>
                                 <div class="section-content">
                                     {% for award in page.awards.all %}
-                                        {% srcset_image award.image original as tmp_award_photo %}
+                                        {% image award.image original as tmp_award_photo %}
                                         <img src="{{ tmp_award_photo.url }}" width="45" height="90" alt="{{ award.name }}" class="medal">
                                     {% endfor %}
                                 </div>
