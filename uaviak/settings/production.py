@@ -6,7 +6,7 @@ DEBUG = False
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "PdSgVkYp3s6v9y$B&E)H@McQfThWmZq4t7w!z%C*F-JaNdRgUkXn2r5u8x/A?D(G"
 # SECURITY WARNING: define the correct hosts in production!
-ALLOWED_HOSTS = ["10.173.73.115", "uaviak.ru"]
+ALLOWED_HOSTS = ["10.173.73.115", "127.0.0.1", "uaviak.ru"]
 CSRF_TRUSTED_ORIGINS = [
     "https://uaviak.ru", "http://uaviak.ru",
     "https://10.173.73.115", "http://10.173.73.115"
