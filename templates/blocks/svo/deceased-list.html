@@ -10,7 +10,7 @@
                     <h1 class="card-header">{{ person.title }}
                         {{ person.birth_date }} – {{ person.death_date }}
                     </h1>
-                    <div class="card-text">{{ person.preview_biography }}</div>
+                    <div class="card-text">{{ person.preview_biography|safe }}</div>
                 </div>
             </a>
         {% endfor %}
