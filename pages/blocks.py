@@ -160,7 +160,7 @@ class PatrioticSectionTitleBlock(blocks.StructBlock):
 
 
 # Patriotic Line Block
-class PatrioticLineBlock(blocks.Block):
+class PatrioticLineBlock(blocks.StructBlock):
     class Meta:
         template = 'blocks/page/patriotic-line.html'
 
