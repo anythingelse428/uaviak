@@ -5,8 +5,8 @@
         {% for person in self.persons %}
             <a class="card" href="{{ person.full_url }}">
                 <div class="card-img">
-                    {% image person.image width-160 height-250 as tmp_photo %}
-                    <img src="{{ tmp_photo.url }}" width="{{ tmp_photo.width }}" height="{{ tmp_photo.height }}"/>
+                    {% image person.image original as tmp_photo %}
+                    <img src="{{ tmp_photo.url }}" width="160" height="250"/>
                 </div>
                 <div class="card-info">
                     <h1 class="card-header">{{ person.title }}
