@@ -1,4 +1,4 @@
-{% load wagtailimages_tags wagtailcore_tags static %}
+{% load wagtailimages_tags wagtailcore_tags %}
 
 <section id="{{ id }}" class="complex-section content --vacancies">
     <div class="wrapper">
@@ -7,11 +7,11 @@
                 <a class="card" href="{{ vacancy.full_url }}">
                     <div class="card-img">
                         {% image vacancy.image original as tmp_photo %}
-                        <img src="{{ tmp_photo.url }}" width="400" height="300"/>
+                        <img src="{{ tmp_photo.url }}"/>
                     </div>
                     <div class="card-info">
                         {% if vacancy.preview_text %}
-                            <h3 class="card-text">{{ vacancy.preview_text }}</h3>
+                            <h3 class="card-text">{{ vacancy.preview_text|safe }}</h3>
                             <div class="spacer" style="height: 16px"></div>
                         {% endif %}
                         <div class="card-text card-more">Подробнее...</div>
