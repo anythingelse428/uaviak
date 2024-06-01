@@ -1,0 +1,23 @@
+<section id="{{ id }}" class="complex-section content --vacancies">
+    <div class="wrapper">
+        <div class="card-list">
+            {% for vacancy in self.vacancies %}
+                <a class="card" href="{{ person.full_url }}">
+                    <div class="card-img">
+                        {% image vacancy.image original as tmp_photo %}
+                        <img src="{{ tmp_photo.url }}" width="400" height="300"/>
+                    </div>
+                    <div class="card-info">
+                        {% if vacancy.preview_text %}
+                            <h3 class="card-text">{{ vacancy.preview_text }}</h3>
+                            <div class="spacer" style="height: 16px"></div>
+                        {% endif %}
+                        <div class="card-text card-more">Подробнее...</div>
+                    </div>
+                </a>
+            {% endfor %}
+            <div class="spacer" style="height: 64px"></div>
+            {% include 'includes/pagination.html' with pages=self.pages current_page=self.current_page filters=self.filters %}
+        </div>
+    </div>
+</section>

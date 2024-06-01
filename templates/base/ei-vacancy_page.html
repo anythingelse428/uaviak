@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load wagtailimages_tags wagtailcore_tags %}
+
+{% block content %}
+    <div class="spacer" style="height: 64px"></div>
+    {% vacancy_top_content_tag %}
+    <div class="spacer" style="height: 64px"></div>
+    <section id="article-single" class="article-single">
+        <div class="wrapper">
+            <article class="article">
+                <section class="content">
+                    <header class="heading">
+                        {% if page.educational_institution %}<div class="category">{{ page.educational_institution.name }}</div>{% endif %}
+                        <h1 class="title">{{ page.title }}</h1>
+                        <time class="datetime">
+                            <svg class="icon" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 13C10.3137 13 13 10.3137 13 7C13 3.68629 10.3137 1 7 1C3.68629 1 1 3.68629 1 7C1 10.3137 3.68629 13 7 13Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8.8 9.39999L7.3516 7.95159C7.12654 7.7266 7.00007 7.42143 7 7.10319V3.39999" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span class="text">{{ page.first_published_at|date:"l, d.m.Y H:i" }}</span>
+                        </time>
+                    </header>
+                    <div class="body">
+                        {% for block in page.body %}
+                            {% include_block block with id=block.id %}
+                        {% endfor %}
+                    </div>
+                </section>
+            </article>
+        </div>
+    </section>
+
+    <script type="text/javascript">
+        viewerJsBundleCbs.push(function() {
+            new Viewer(
+                document.querySelector('#article-single .content .body')
+            )
+        })
+    </script>
+    
+    <div class="spacer" style="height: 64px"></div>
+{% endblock content %}

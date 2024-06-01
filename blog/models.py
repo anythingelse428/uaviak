@@ -12,6 +12,10 @@ from pages.blocks import PageContentBlock
 class Category(models.Model):
     name = models.CharField(max_length=150, verbose_name='Название')
 
+    search_fields = [
+        index.SearchField('name')
+    ]
+
     panels = [
         FieldPanel("name")
     ]

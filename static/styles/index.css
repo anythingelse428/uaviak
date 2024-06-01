@@ -1928,3 +1928,168 @@ th {
     font-size: 24px;
   }
 }
+
+/* vacancies */
+.content.--vacancies .card-list {
+    display: flex;
+    gap: 40px 30px;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin-inline: auto;
+    justify-content: start;
+}
+
+.content.--vacancies .card{
+    background: var(--color-mechanical-engineering);
+    width: calc(50% - 16px);
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px 0px 0px 5px;
+    text-decoration: none;
+}
+
+.content.--vacancies .card .card-img{
+    display: inline-block;
+    width: 100%;
+    max-height: 300px;
+    height: 100%;
+}
+
+.content.--vacancies .card .card-img>img{
+    object-fit: cover;
+    object-position: center;
+}
+
+.content.--vacancies .card .card-info{
+    padding: 10px;
+    height: calc(250px - 10px);
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.content.--vacancies .card .card-header {
+    color: var(--color-light);
+    font-family: 'Circe', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    white-space: pre-line;
+}
+
+.content.--vacancies .card .card-text {
+    color: var(--color-light);
+    font-family: 'Circe', sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    white-space: pre-line;
+    word-break: break-word;
+    text-overflow: clip;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+    line-clamp:7;
+}
+
+.content.--vacancies .card .card-more {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 1400px) {
+    .content.--vacancies .card .card-text{
+        -webkit-line-clamp: 8;
+        line-clamp: 8;
+    }
+}
+
+/* sorry for that*/
+@media screen and (max-width: 1150px) {
+    .content.--vacancies .card {
+        width: 95%;
+    }
+
+    .content.--vacancies .card .card-text{
+        -webkit-line-clamp: 7;
+        line-clamp: 7;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .content.--vacancies .card .card-text{
+        -webkit-line-clamp: 6;
+        line-clamp: 6;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .content.--vacancies .card-list{
+        justify-content: center;
+    }
+
+    .content.--vacancies .card .card-text{
+        -webkit-line-clamp: 8;
+        line-clamp: 8;
+    }
+}
+
+
+@media screen and (max-width: 585px) {
+    .content.--vacancies .card .card-text{
+        -webkit-line-clamp: 7;
+        line-clamp: 7;
+    }
+
+    .content.--vacancies .header{
+        font-size: 48px;
+    }
+}
+
+@media screen and (max-width: 433px) {
+    .content.--vacancies .card .card-text{
+        -webkit-line-clamp: 6;
+        line-clamp: 6;
+    }
+}
+
+@media screen and (max-width: 362px) {
+    .content.--vacancies .card .card-img>img,
+    .content.--vacancies .card .card-img{
+        max-width: 140px;
+    }
+
+    .content.--vacancies .card .card-text{
+        -webkit-line-clamp: 5;
+        line-clamp: 5;
+    }
+}
+
+@media screen and (max-width: 315px) {
+    .content.--vacancies .header {
+        font-size: 32px;
+    }
+
+    .content.--vacancies .card {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .content.--vacancies .card .card-img>img,
+    .content.--vacancies .card .card-img {
+       width: 100%;
+       max-width: 100%;
+    }
+
+    .content.--vacancies .card .card-info {
+        max-width: 90%;
+        margin-inline: auto;
+    }
+
+    .content.--vacancies .card .card-text {
+        line-clamp: 7;
+        -webkit-line-clamp: 7;
+    }
+}
