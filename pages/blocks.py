@@ -6,6 +6,7 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.contrib.table_block.blocks import TableBlock
 from blog.blocks import NewsSliderBlock, ArticlesListBlock
 from svo.blocks import DeceasedListBlock
+from vacancies.blocks import EmployerVacanciesListBlock, EducationalInstitutionVacanciesListBlock
 
 # Spacer Block
 from navigation.blocks import SiteMapBlock
@@ -222,6 +223,10 @@ class PageContentBlock(blocks.StreamBlock):
                                               help_text='Баннер со статистикой')
     news_slider = NewsSliderBlock(icon='folder-open-1', label='Карусель новостей')
     articles_list = ArticlesListBlock(icon='list-ol', label='Список статей')
+    employer_vacancies_list = EmployerVacanciesListBlock(icon='list-ol', label='Список вакансий работодателей')
+    educational_institution_vacancies_list = EducationalInstitutionVacanciesListBlock(
+        icon='list-ol', label='Список вакансий учебных учреждений'
+    )
     deceased_list = DeceasedListBlock(icon='group', label='Список усопших')
     table = TableBlock(
         label='Таблица',
