@@ -5,8 +5,10 @@
 __pycache__
 db.sqlite3
 media
+web.zip
 
 # Backup files #
+...git-back
 *.bak
 
 # If you are using PyCharm #
@@ -46,6 +48,7 @@ out/
 atlassian-ide-plugin.xml
 
 # Python #
+__pycache__/
 *.py[cod]
 *$py.class
 

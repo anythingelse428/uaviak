@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Circe';
+    src: url("Circe-Light.f71b8fadce16.eot");
+    src: local('Circe Light'), local('Circe-Light'),
+        url("Circe-Light.f71b8fadce16.eot?#iefix") format('embedded-opentype'),
+        url("Circe-Light.501ee8c738d8.woff2") format('woff2'),
+        url("Circe-Light.188f23ff139f.woff") format('woff'),
+        url("Circe-Light.211ee0b61544.ttf") format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circe';
+    src: url("Circe-ExtraBold.97833caed49e.eot");
+    src: local('Circe Extra Bold'), local('Circe-ExtraBold'),
+        url("Circe-ExtraBold.97833caed49e.eot?#iefix") format('embedded-opentype'),
+        url("Circe-ExtraBold.a4dd30056f4b.woff2") format('woff2'),
+        url("Circe-ExtraBold.5b0ee3269915.woff") format('woff'),
+        url("Circe-ExtraBold.a67f51c29855.ttf") format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circe';
+    src: url("Circe-Thin.09d76f805ee9.eot");
+    src: local('Circe Thin'), local('Circe-Thin'),
+        url("Circe-Thin.09d76f805ee9.eot?#iefix") format('embedded-opentype'),
+        url("Circe-Thin.1cf63cf321a5.woff2") format('woff2'),
+        url("Circe-Thin.b74612bfc099.woff") format('woff'),
+        url("Circe-Thin.5fc209e259ba.ttf") format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circe';
+    src: url("Circe-Regular.9220f88e6b24.eot");
+    src: local('Circe'), local('Circe-Regular'),
+        url("Circe-Regular.9220f88e6b24.eot?#iefix") format('embedded-opentype'),
+        url("Circe-Regular.99f799550bf3.woff2") format('woff2'),
+        url("Circe-Regular.9c4d0325589d.woff") format('woff'),
+        url("Circe-Regular.df74f0ef3569.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circe';
+    src: url("Circe-Bold.7d0392e2a5ae.eot");
+    src: local('Circe Bold'), local('Circe-Bold'),
+        url("Circe-Bold.7d0392e2a5ae.eot?#iefix") format('embedded-opentype'),
+        url("Circe-Bold.4502f23814ae.woff2") format('woff2'),
+        url("Circe-Bold.5567f48d3ded.woff") format('woff'),
+        url("Circe-Bold.821fdc22a009.ttf") format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
