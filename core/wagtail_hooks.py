@@ -1,13 +1,9 @@
 """Richtext hooks."""
-from abc import ABC
-
 import wagtail.admin.rich_text.editors.draftail.features as draftail_features
-from django.utils.html import escape
 from wagtail.admin.rich_text.converters.html_to_contentstate import (
     InlineStyleElementHandler
 )
 from wagtail.core import hooks
-from wagtail.core.rich_text import LinkHandler
 
 
 @hooks.register("register_rich_text_features")
