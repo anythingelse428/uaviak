@@ -5,6 +5,7 @@
 __pycache__
 db.sqlite3
 media
+web.zip
 
 # Backup files #
 *.bak
@@ -46,6 +47,7 @@ out/
 atlassian-ide-plugin.xml
 
 # Python #
+__pycache__/
 *.py[cod]
 *$py.class
 
