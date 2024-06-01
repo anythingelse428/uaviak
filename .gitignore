@@ -8,6 +8,7 @@ media
 web.zip
 
 # Backup files #
+...git-back
 *.bak
 
 # If you are using PyCharm #
