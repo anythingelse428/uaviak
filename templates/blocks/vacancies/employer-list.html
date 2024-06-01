@@ -4,7 +4,7 @@
     <div class="wrapper">
         <div class="card-list">
             {% for vacancy in self.vacancies %}
-                <a class="card" href="{{ person.full_url }}">
+                <a class="card" href="{{ vacancy.full_url }}">
                     <div class="card-img">
                         {% image vacancy.image original as tmp_photo %}
                         <img src="{{ tmp_photo.url }}" width="400" height="300"/>
