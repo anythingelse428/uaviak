@@ -7,7 +7,7 @@
                 <a class="card" href="{{ vacancy.full_url }}">
                     <div class="card-img">
                         {% image vacancy.image original as tmp_photo %}
-                        <img src="{{ tmp_photo.url }}" width="400" height="300"/>
+                        <img src="{{ tmp_photo.url }}"/>
                     </div>
                     <div class="card-info">
                         {% if vacancy.preview_text %}

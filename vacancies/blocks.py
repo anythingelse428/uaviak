@@ -63,13 +63,13 @@ class EducationalInstitutionVacanciesListBlock(blocks.StructBlock):
     )
 
     def get_context(self, value, parent_context=None):
-        from vacancies.models import EmployerVacancyPage
+        from vacancies.models import EducationalInstitutionVacancyPage
 
         context = super().get_context(value, parent_context=parent_context)
 
         filters = {}
 
-        queryset = EmployerVacancyPage.objects.live().order_by(
+        queryset = EducationalInstitutionVacancyPage.objects.live().order_by(
             '-is_favorite', '-educational_institution__is_favorite', '-first_published_at'
         )
 
