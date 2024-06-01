@@ -1936,7 +1936,7 @@ th {
     flex-wrap: wrap;
     align-items: stretch;
     margin-inline: auto;
-    justify-content: start;
+    justify-content: center;
 }
 
 .content.--vacancies .card{
@@ -1964,7 +1964,7 @@ th {
     padding: 10px;
     height: calc(250px - 10px);
     text-overflow: ellipsis;
-    width: 100%;
+    width: 95%;
 }
 
 .content.--vacancies .card .card-header {
@@ -2008,10 +2008,6 @@ th {
 
 /* sorry for that*/
 @media screen and (max-width: 1150px) {
-    .content.--vacancies .card {
-        width: 95%;
-    }
-
     .content.--vacancies .card .card-text{
         -webkit-line-clamp: 7;
         line-clamp: 7;
@@ -2026,10 +2022,6 @@ th {
 }
 
 @media screen and (max-width: 768px) {
-    .content.--vacancies .card-list{
-        justify-content: center;
-    }
-
     .content.--vacancies .card .card-text{
         -webkit-line-clamp: 8;
         line-clamp: 8;
