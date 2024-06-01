@@ -1,4 +1,4 @@
-{% load wagtailimages_tags wagtailcore_tags static %}
+{% load wagtailimages_tags wagtailcore_tags %}
 
 <section id="{{ id }}" class="complex-section content --vacancies">
     <div class="wrapper">
@@ -11,7 +11,7 @@
                     </div>
                     <div class="card-info">
                         {% if vacancy.preview_text %}
-                            <h3 class="card-text">{{ vacancy.preview_text }}</h3>
+                            <h3 class="card-text">{{ vacancy.preview_text|safe }}</h3>
                             <div class="spacer" style="height: 16px"></div>
                         {% endif %}
                         <div class="card-text card-more">Подробнее...</div>
