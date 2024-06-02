@@ -1957,14 +1957,15 @@ th {
 }
 
 .content.--vacancies .card .card-img>img{
-    object-fit: contain;
+    object-fit: cover;
     height: 100%;
     width: 100%;
 }
 
 .content.--vacancies .card .card-info{
-    padding: 10px;
+    padding: 20px;
     text-overflow: ellipsis;
+    box-sizing: border-box;
     width: 100%;
 }
 
