@@ -1963,8 +1963,9 @@ th {
 }
 
 .content.--vacancies .card .card-info{
-    padding: 10px;
+    padding: 20px;
     text-overflow: ellipsis;
+    box-sizing: border-box;
     width: 100%;
 }
 
