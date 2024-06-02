@@ -130,11 +130,6 @@ class EmployerVacancyPage(Page):
     class Meta:
         verbose_name = 'Вакансия работодателя'
         verbose_name_plural = 'Вакансии работодателей'
-        ordering = [
-            F('is_favorite').desc(nulls_last=True),
-            F('employer__is_favorite').desc(nulls_last=True),
-            F('first_published_at').desc(nulls_last=True)
-        ]
 
 
 class EducationalInstitutionVacancyPage(Page):
@@ -178,8 +173,3 @@ class EducationalInstitutionVacancyPage(Page):
     class Meta:
         verbose_name = 'Вакансия учебного заведения'
         verbose_name_plural = 'Вакансии учебных заведений'
-        ordering = [
-            F('is_favorite').desc(nulls_last=True),
-            F('educational_institution__is_favorite').desc(nulls_last=True),
-            F('first_published_at').desc(nulls_last=True)
-        ]
