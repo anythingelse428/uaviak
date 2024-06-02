@@ -1932,6 +1932,8 @@ th {
 .content.--vacancies .card-list {
     display: flex;
     gap: 40px 30px;
+    max-width: 900px;
+    width: 100%;
     flex-wrap: wrap;
     align-items: stretch;
     margin-inline: auto;
@@ -1939,24 +1941,25 @@ th {
 }
 
 .content.--vacancies .card{
-    background: var(--color-mechanical-engineering);
-    width: 95%;
     display: flex;
     flex-direction: column;
-    border-radius: 5px 0px 0px 5px;
     text-decoration: none;
 }
 
 .content.--vacancies .card .card-img{
     display: inline-block;
     width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
     max-height: 400px;
-    height: 100%;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.2);
 }
 
 .content.--vacancies .card .card-img>img{
-    object-fit: cover;
-    object-position: center;
+    object-fit: contain;
     height: 100%;
     width: 100%;
 }
