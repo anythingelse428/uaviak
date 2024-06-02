@@ -2049,11 +2049,6 @@ th {
 }
 
 @media screen and (max-width: 362px) {
-    .content.--vacancies .card .card-img>img,
-    .content.--vacancies .card .card-img{
-        max-width: 140px;
-    }
-
     .content.--vacancies .card .card-text{
         -webkit-line-clamp: 5;
         line-clamp: 5;
@@ -2068,17 +2063,6 @@ th {
     .content.--vacancies .card {
         flex-direction: column;
         height: auto;
-    }
-
-    .content.--vacancies .card .card-img>img,
-    .content.--vacancies .card .card-img {
-       width: 100%;
-       max-width: 100%;
-    }
-
-    .content.--vacancies .card .card-info {
-        max-width: 90%;
-        margin-inline: auto;
     }
 
     .content.--vacancies .card .card-text {
