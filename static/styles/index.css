@@ -1963,7 +1963,6 @@ th {
 
 .content.--vacancies .card .card-info{
     padding: 10px;
-    height: calc(250px - 10px);
     text-overflow: ellipsis;
     width: 100%;
 }
