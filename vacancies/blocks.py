@@ -1,5 +1,6 @@
 from django.core.paginator import PageNotAnInteger, EmptyPage, Paginator
 from wagtail import blocks
+from django.db.models import F
 
 
 class EmployerVacanciesListBlock(blocks.StructBlock):
@@ -15,7 +16,9 @@ class EmployerVacanciesListBlock(blocks.StructBlock):
         filters = {}
 
         queryset = EmployerVacancyPage.objects.live().order_by(
-            '-is_favorite', '-employer__is_favorite', '-first_published_at'
+            F('is_favorite').desc(nulls_last=True),
+            F('employer__is_favorite').desc(nulls_last=True),
+            F('first_published_at').desc(nulls_last=True)
         )
 
         # Search
@@ -70,7 +73,9 @@ class EducationalInstitutionVacanciesListBlock(blocks.StructBlock):
         filters = {}
 
         queryset = EducationalInstitutionVacancyPage.objects.live().order_by(
-            '-is_favorite', '-educational_institution__is_favorite', '-first_published_at'
+            F('is_favorite').desc(nulls_last=True),
+            F('educational_institution__is_favorite').desc(nulls_last=True),
+            F('first_published_at').desc(nulls_last=True)
         )
 
         # Search

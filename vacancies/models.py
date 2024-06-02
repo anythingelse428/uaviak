@@ -5,6 +5,7 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.models import Page, StreamField
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
+from django.db.models import F
 
 from pages.blocks import PageContentBlock
 
@@ -129,7 +130,11 @@ class EmployerVacancyPage(Page):
     class Meta:
         verbose_name = 'Вакансия работодателя'
         verbose_name_plural = 'Вакансии работодателей'
-        ordering = ['-is_favorite', '-employer__is_favorite', '-first_published_at']
+        ordering = [
+            F('is_favorite').desc(nulls_last=True),
+            F('employer__is_favorite').desc(nulls_last=True),
+            F('first_published_at').desc(nulls_last=True)
+        ]
 
 
 class EducationalInstitutionVacancyPage(Page):
@@ -173,4 +178,8 @@ class EducationalInstitutionVacancyPage(Page):
     class Meta:
         verbose_name = 'Вакансия учебного заведения'
         verbose_name_plural = 'Вакансии учебных заведений'
-        ordering = ['-is_favorite', '-educational_institution__is_favorite', '-first_published_at']
+        ordering = [
+            F('is_favorite').desc(nulls_last=True),
+            F('educational_institution__is_favorite').desc(nulls_last=True),
+            F('first_published_at').desc(nulls_last=True)
+        ]

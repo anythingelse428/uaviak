@@ -4,7 +4,6 @@
     <div class="wrapper">
         <div class="card-list">
             {% vacancy_top_content_tag %}
-            <div class="spacer" style="height: 32px"></div>
             {% for vacancy in self.vacancies %}
                 <a class="card" href="{{ vacancy.full_url }}">
                     <div class="card-img">
@@ -14,7 +13,6 @@
                     <div class="card-info">
                         {% if vacancy.preview_text %}
                             <h3 class="card-text">{{ vacancy.preview_text|safe }}</h3>
-                            <div class="spacer" style="height: 16px"></div>
                         {% endif %}
                         <div class="card-text card-more">Подробнее...</div>
                     </div>
