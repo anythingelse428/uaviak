@@ -1,8 +1,10 @@
-{% load wagtailimages_tags wagtailcore_tags %}
+{% load vacancies_tags wagtailimages_tags wagtailcore_tags %}
 
 <section id="{{ id }}" class="complex-section content --vacancies">
     <div class="wrapper">
         <div class="card-list">
+            {% vacancy_top_content_tag %}
+            <div class="spacer" style="height: 32px"></div>
             {% for vacancy in self.vacancies %}
                 <a class="card" href="{{ vacancy.full_url }}">
                     <div class="card-img">
